@@ -1,0 +1,21 @@
+{
+  "name": "RenalAI — Smart Report Analyzer",
+  "short_name": "RenalAI",
+  "description": "AI-powered kidney panel analyzer with bilingual EN/Urdu output",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/img/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["health", "medical", "productivity"]
+}

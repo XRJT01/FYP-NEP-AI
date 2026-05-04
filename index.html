@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RenalAI – Smart Report Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="AI-powered kidney panel analyzer with bilingual EN/Urdu output, in-browser OCR, and KDIGO-grounded risk scoring.">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="logo">
+      <div class="logo-icon">R</div>
+      RenalAI
+      <span class="logo-sub" data-i18n="app.tagline">Smart Report Analyzer</span>
+    </div>
+    <div class="topbar-right">
+      <button class="lang-btn" id="lang-toggle" aria-label="Toggle language">EN | اردو</button>
+      <span class="status-dot" data-i18n="app.online">System Online</span>
+      <div class="avatar" id="user-avatar" title="Account">SA</div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="nav-item active" data-route="dashboard"><span class="nav-icon">⬡</span><span data-i18n="nav.dashboard">Dashboard</span></div>
+    <div class="nav-item" data-route="upload"><span class="nav-icon">↑</span><span data-i18n="nav.upload">Upload Report</span></div>
+    <div class="nav-item" data-route="nephra"><span class="nav-icon">◐</span><span data-i18n="nav.nephra">Nephra Scanner</span></div>
+    <div class="nav-item" data-route="analysis"><span class="nav-icon">◎</span><span data-i18n="nav.analysis">Analysis Result</span></div>
+    <div class="nav-item" data-route="trends"><span class="nav-icon">∿</span><span data-i18n="nav.trends">Trends</span></div>
+
+    <div class="nav-section" data-i18n="nav.collaboration">Collaboration</div>
+    <div class="nav-item" data-route="doctors"><span class="nav-icon">✦</span><span data-i18n="nav.doctors">Doctor Portal</span></div>
+    <div class="nav-item" data-route="history"><span class="nav-icon">≡</span><span data-i18n="nav.history">Report History</span></div>
+
+    <div class="nav-section" data-i18n="nav.account">Account</div>
+    <div class="nav-item" data-route="settings"><span class="nav-icon">⊙</span><span data-i18n="nav.settings">Settings</span></div>
+
+    <div style="flex:1"></div>
+    <div class="sidebar-quota">
+      <div class="sidebar-quota-label" data-i18n="nav.tier">Free tier</div>
+      <div class="sidebar-quota-value"><span id="quota-used">0</span> / 50 <span data-i18n="nav.reports">reports</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="quota-fill" style="width:0%"></div></div>
+    </div>
+  </nav>
+
+  <main class="main">
+    <section class="page active" id="page-dashboard"></section>
+    <section class="page" id="page-upload"></section>
+    <section class="page" id="page-nephra"></section>
+    <section class="page" id="page-analysis"></section>
+    <section class="page" id="page-trends"></section>
+    <section class="page" id="page-doctors"></section>
+    <section class="page" id="page-history"></section>
+    <section class="page" id="page-settings"></section>
+  </main>
+</div>
+
+<div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
+<div id="modal-root"></div>
+
+<!-- Vendor (CDN) -->
+<script src="https://unpkg.com/dexie@4.0.8/dist/dexie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<!-- App modules (load order matters) -->
+<script src="js/storage.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/biomarker-extractor.js"></script>
+<script src="js/ocr.js"></script>
+<script src="js/extraction-form.js"></script>
+<script src="js/risk-engine.js"></script>
+<script src="js/trend-analyzer.js"></script>
+<script src="js/recommendations.js"></script>
+<script src="js/share.js"></script>
+<script src="js/nephra.js"></script>
+<script src="js/export.js"></script>
+<script src="js/pages/auth.js"></script>
+<script src="js/pages/dashboard.js"></script>
+<script src="js/pages/nephra.js"></script>
+<script src="js/pages/upload.js"></script>
+<script src="js/pages/analysis.js"></script>
+<script src="js/pages/trends.js"></script>
+<script src="js/pages/doctors.js"></script>
+<script src="js/pages/history.js"></script>
+<script src="js/pages/settings.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
